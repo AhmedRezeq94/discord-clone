@@ -1,6 +1,5 @@
 # Discord Clone
 
-![Discord Clone]([link_to_your_image_here](https://images-eds-ssl.xboxlive.com/image?url=Q_rwcVSTCIytJ0KOzcjWTYl.n38D8jlKWXJx7NRJmQKBAEDCgtTAQ0JS02UoaiwRCHTTX1RAopljdoYpOaNfVf5nBNvbwGfyR5n4DAs0DsOwxSO9puiT_GgKqinHT8HsW8VYeiiuU1IG3jY69EhnsQ--&format=source))
 
 This is a full-stack, real-time Discord clone built using Next.js 13, React, Socket.io, Prisma, Tailwind CSS, and MySQL. It offers a comprehensive set of features, including servers, channels, video calls, audio calls, message editing and deletion, member roles, and much more. This README will guide you through the setup and provide an overview of the key features.
 
