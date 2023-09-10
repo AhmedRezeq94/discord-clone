@@ -25,7 +25,8 @@ import {
 
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-//   import { FileUpload } from "@/components/file-upload";
+
+import { FileUpload } from "@/components/file-upload";
 //   import { useRouter } from "next/navigation";
 
 const formSchema = z.object({
@@ -38,10 +39,10 @@ const formSchema = z.object({
 });
 
 export const InitialModel = () => {
-    const [isMounted, setIsMounted] = useState(false);
-    useEffect(()=>{
-        setIsMounted(true);
-    },[]);
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -53,9 +54,9 @@ export const InitialModel = () => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     console.log(values);
   };
-if(!isMounted){
+  if (!isMounted) {
     return null;
-}
+  }
   return (
     <Dialog open>
       <DialogContent className="bg-white text-black p-0 overflow-hidden">
@@ -72,7 +73,21 @@ if(!isMounted){
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
             <div className="space-y-8 px-6">
               <div className="flex items-center justify-center text-center">
-                TODO: Image Upload
+                <FormField
+                  control={form.control}
+                  name="imageUrl"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormControl>
+                        <FileUpload
+                          endpoint="serverImage"
+                          value={field.value}
+                          onChange={field.onChange}
+                        />
+                      </FormControl>
+                    </FormItem>
+                  )}
+                />
               </div>
               <FormField
                 control={form.control}
@@ -90,16 +105,16 @@ if(!isMounted){
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage>
-
-                    </FormMessage>
+                    <FormMessage></FormMessage>
                     <FormMessage />
                   </FormItem>
                 )}
               />
             </div>
             <DialogFooter className="bg-gray-100 px-6 py-4">
-              <Button disabled={isLoading} variant="primary">Create</Button>
+              <Button disabled={isLoading} variant="primary">
+                Create
+              </Button>
             </DialogFooter>
           </form>
         </Form>
